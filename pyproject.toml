@@ -1,0 +1,66 @@
+[project]
+name = "ray-qdrant"
+version = "0.1.1"
+description = "Write Ray datasets to Qdrant in parallel"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Qdrant Team", email = "info@qdrant.tech" }]
+keywords = ["ray", "ray-data", "qdrant", "vector-database", "embeddings"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Database",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+]
+dependencies = [
+    "ray[data]>=2.40.0",
+    "qdrant-client>=1.16.0",
+    "numpy>=1.22",
+    "pyarrow>=9.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/qdrant-labs/qdrant-ray"
+Repository = "https://github.com/qdrant-labs/qdrant-ray"
+Issues = "https://github.com/qdrant-labs/qdrant-ray/issues"
+Changelog = "https://github.com/qdrant-labs/qdrant-ray/blob/main/CHANGELOG.md"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.13",
+    "pytest>=8.0.0",
+    "ruff>=0.8.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.0,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["ray_qdrant"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
